@@ -1,0 +1,69 @@
+{
+  "name": "project-x",
+  "version": "1.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "contributors": [
+    {
+      "name": "Kasper Olsson Hans (TV2)",
+      "url": "https://github.com/olzzon"
+    }
+  ],
+  "author": "Olzzon",
+  "scripts": {
+    "build": "yarn build:main",
+    "buildstart": "yarn build && yarn start",
+    "buildstart:dev": "yarn build && DEV=true yarn start",
+    "buildinspect": "yarn build && yarn inspect",
+    "buildinspect:dev": "yarn build && DEV=true yarn inspect",
+    "build:main": "tsc -p tsconfig.json",
+    "rebuild": "node-pre-gyp install --build-from-source",
+    "lint": "prettier --check .",
+    "unit": "jest",
+    "test": "yarn lint && yarn unit",
+    "test:integration": "yarn lint && jest --config=jest-integration.config.js",
+    "watch": "jest --watch",
+    "cov": "jest; open-cli coverage/lcov-report/index.html",
+    "cov-open": "open-cli coverage/lcov-report/index.html",
+    "send-coverage": "jest && codecov",
+    "docs": "yarn docs:html && open-cli docs/index.html",
+    "docs:html": "typedoc src/index.ts --excludePrivate --mode file --theme minimal --out docs",
+    "docs:json": "typedoc --mode file --json docs/typedoc.json src/index.ts",
+    "docs:publish": "yarn docs:html && gh-pages -d docs",
+    "changelog": "standard-version",
+    "inspect": "node --inspect dist/index.js",
+    "release": "yarn reset && yarn test && yarn changelog",
+    "reset": "git clean -dfx && git reset --hard && yarn",
+    "ci": "yarn test",
+    "validate:dependencies": "yarn audit",
+    "license-validate": "node-license-validator -p -d --allow-licenses MIT MIT/X11 BSD BSD-3-Clause BSD-2-Clause ISC Apache Apache-2.0 Unlicense --allow-packages cycle",
+    "start": "node dist/index.js",
+    "debug": "node --inspect dist/index.js",
+    "unlinkall": "yarn unlink tv-automation-server-core-integration && yarn --check-files"
+  },
+  "gypfile": true,
+  "license": "MIT",
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "node-pre-gyp": "^0.17.0"
+  },
+  "resolutions": {
+    "minimist": "^1.2.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.3.2",
+    "@types/underscore": "^1.8.13",
+    "codecov": "^3.6.1",
+    "jest": "^27.0.6",
+    "jest-haste-map": "^24.5.0",
+    "jest-resolve": "^24.5.0",
+    "node-gyp": "^8.1.0",
+    "node-license-validator": "^1.3.0",
+    "npm-scripts-info": "^0.3.9",
+    "prettier": "2.3.2",
+    "standard-version": "^9.3.0",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.3.5"
+  }
+}
