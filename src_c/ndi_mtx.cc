@@ -3,7 +3,7 @@
 #include <iostream>
 #include <Processing.NDI.Lib.h>
 
-NDIlib_routing_instance_t pNDI_routing;
+NDIlib_routing_instance_t pNDI_routing[100];
 
 napi_value changeRoutingSource(napi_env env, napi_callback_info info)
 {
@@ -12,13 +12,12 @@ napi_value changeRoutingSource(napi_env env, napi_callback_info info)
   napi_status status;
   napi_value result;
 
-
   // Read arguments passed to promise
-  size_t argc = 1;
-  napi_value args[1];
+  size_t argc = 2;
+  napi_value args[2];
   status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-  if (argc != (size_t)1)
+  if (argc != (size_t)2)
   {
     printf("Wrong args\n");
     return NULL;
@@ -45,9 +44,12 @@ napi_value changeRoutingSource(napi_env env, napi_callback_info info)
   ndi_source->p_ndi_name = "";
   ndi_source->p_url_address = source;
 
-  NDIlib_routing_change(pNDI_routing, ndi_source);
+  int target_index;
+  status = napi_get_value_int32(env, args[1], &target_index);
 
-  printf("Changing Source");
+  NDIlib_routing_change(pNDI_routing[target_index], ndi_source);
+
+  printf("Changing Target Index %i to Source %s", target_index, source);
   napi_value str;
   status = napi_create_string_utf8(env, "hello world", NAPI_AUTO_LENGTH, &str);
   assert(status == napi_ok);
@@ -61,11 +63,11 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
   napi_status status;
 
   // Read arguments passed to promise
-  size_t argc = 2;
-  napi_value args[2];
+  size_t argc = 3;
+  napi_value args[3];
   status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-  if (argc != (size_t)2)
+  if (argc != (size_t)3)
   {
     printf("Wrong args\n");
     return NULL;
@@ -103,6 +105,9 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
 
   printf("Target Name : %s \n", target);
 
+  int target_index;
+  status = napi_get_value_int32(env, args[2], &target_index);
+
   // Populate carrier with new instance
   NDIlib_source_t *ndi_source = new NDIlib_source_t();
   ndi_source->p_ndi_name = "";
@@ -113,11 +118,11 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
   NDI_send_create_desc.p_ndi_name = target;
 
   // We create the NDI routing
-  pNDI_routing = NDIlib_routing_create(&NDI_send_create_desc);
-  if (!pNDI_routing)
+  pNDI_routing[target_index] = NDIlib_routing_create(&NDI_send_create_desc);
+  if (!pNDI_routing[target_index])
     return NULL;
 
-  NDIlib_routing_change(pNDI_routing, ndi_source);
+  NDIlib_routing_change(pNDI_routing[target_index], ndi_source);
 
   printf("Routing initialized!!!! \n");
   napi_value str;
