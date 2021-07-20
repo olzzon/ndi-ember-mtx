@@ -1,13 +1,22 @@
+import { emberLocalClient, setMatrixConnection } from "./ember/emberLocalClient"
+import { emberMtxServer } from "./ember/emberServer"
+
 const ndi_mtx = require('bindings')('ndi_mtx')
+
+emberMtxServer()
+emberLocalClient()
+
 
 let source = 0
 
+setMatrixConnection(source - 1, 0 + 1)
 ndi_mtx.initializeRouting('192.168.0.12:5961', 'TestTarget1', 0)
 ndi_mtx.initializeRouting('127.0.0.1:5962', 'TestTarget2', 1)
 
 setInterval(() => {
     console.log('change source in loop')
     source = source ? 0 : 1
+    setMatrixConnection(source - 1, 0 + 1)
     if (source === 1) {
         ndi_mtx.changeRoutingSource('127.0.0.1:5962', 0)
         ndi_mtx.changeRoutingSource('192.168.0.12:5961', 1)
@@ -16,3 +25,5 @@ setInterval(() => {
         ndi_mtx.changeRoutingSource('127.0.0.1:5962', 1)
     }
 }, 3000)
+
+

@@ -8,7 +8,6 @@ NDIlib_routing_instance_t pNDI_routing[100];
 napi_value changeRoutingSource(napi_env env, napi_callback_info info)
 {
   napi_valuetype type;
-
   napi_status status;
   napi_value result;
 
