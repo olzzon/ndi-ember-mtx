@@ -1,12 +1,16 @@
 {
-  "name": "project-x",
-  "version": "1.1.0",
-  "description": "",
+  "name": "ndi-ember-mtx",
+  "version": "0.0.1",
+  "description": "NDI Matrice controlled with Ember for VSM integration",
   "main": "dist/index.js",
   "contributors": [
     {
-      "name": "Kasper Olsson Hans (TV2)",
+      "name": "Kasper Olsson Hans",
       "url": "https://github.com/olzzon"
+    },
+    {
+      "name": "Streampunk Media",
+      "url": "http://www.streampunk.media"
     }
   ],
   "author": "Olzzon",
