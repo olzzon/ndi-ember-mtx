@@ -326,8 +326,8 @@ ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
-cmd_regen_makefile = cd $(srcdir); /Users/olzzon/coding/ndi-ember-mtx/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/Users/olzzon/Library/Caches/node-gyp/12.22.1" "-Dnode_gyp_dir=/Users/olzzon/coding/ndi-ember-mtx/node_modules/node-gyp" "-Dnode_lib_file=/Users/olzzon/Library/Caches/node-gyp/12.22.1/<(target_arch)/node.lib" "-Dmodule_root_dir=/Users/olzzon/coding/ndi-ember-mtx" "-Dnode_engine=v8" "--depth=." "-Goutput_dir=." "--generator-output=build" -I/Users/olzzon/coding/ndi-ember-mtx/build/config.gypi -I/Users/olzzon/coding/ndi-ember-mtx/node_modules/node-gyp/addon.gypi -I/Users/olzzon/Library/Caches/node-gyp/12.22.1/include/node/common.gypi "--toplevel-dir=." binding.gyp
-Makefile: $(srcdir)/../../Library/Caches/node-gyp/12.22.1/include/node/common.gypi $(srcdir)/build/config.gypi $(srcdir)/binding.gyp $(srcdir)/node_modules/node-gyp/addon.gypi
+cmd_regen_makefile = cd $(srcdir); /Users/olzzon/coding/ndi-ember-mtx/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/Users/olzzon/Library/Caches/node-gyp/16.4.2" "-Dnode_gyp_dir=/Users/olzzon/coding/ndi-ember-mtx/node_modules/node-gyp" "-Dnode_lib_file=/Users/olzzon/Library/Caches/node-gyp/16.4.2/<(target_arch)/node.lib" "-Dmodule_root_dir=/Users/olzzon/coding/ndi-ember-mtx" "-Dnode_engine=v8" "--depth=." "-Goutput_dir=." "--generator-output=build" -I/Users/olzzon/coding/ndi-ember-mtx/build/config.gypi -I/Users/olzzon/coding/ndi-ember-mtx/node_modules/node-gyp/addon.gypi -I/Users/olzzon/Library/Caches/node-gyp/16.4.2/include/node/common.gypi "--toplevel-dir=." binding.gyp
+Makefile: $(srcdir)/build/config.gypi $(srcdir)/../../Library/Caches/node-gyp/16.4.2/include/node/common.gypi $(srcdir)/binding.gyp $(srcdir)/node_modules/node-gyp/addon.gypi
 	$(call do_cmd,regen_makefile)
 
 # "all" is a concatenation of the "all" targets from all the included

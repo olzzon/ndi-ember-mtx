@@ -25,7 +25,7 @@ export const emberMtxServer = () => {
                 logger.error('Ember connection unknown error' + error.message)
             }
         })
-        .on("matrix-change", info => {
+        .on("matrix-change", (info: any) => {
             console.log(`Client ${info.client} changed ${info.target} and ${info.sources}`);
          })
     logger.info('Setting up Ember Server')

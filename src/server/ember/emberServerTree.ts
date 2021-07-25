@@ -40,7 +40,7 @@ const defaultSources = [
     { identifier: 't-1', value: 0, access: 'readWrite' },
     { identifier: 't-2', value: 0, access: 'readWrite' },
 ]
-const labels = function (endpoints, type) {
+const labels = function (endpoints: any, type: any) {
     let labelArray = []
     for (let i = 0; i < endpoints.length; i++) {
         let endpoint = endpoints[i]
@@ -54,7 +54,7 @@ const labels = function (endpoints, type) {
     return labelArray
 }
 
-const buildConnections = function (s, t) {
+const buildConnections = function (s: any, t: any) {
     let connections = []
     for (let i = 0; i < t.length; i++) {
         connections.push({ target: `${i}` })

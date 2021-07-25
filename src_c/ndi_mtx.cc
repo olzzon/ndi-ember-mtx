@@ -18,7 +18,7 @@ napi_value changeRoutingSource(napi_env env, napi_callback_info info)
 
   if (argc != (size_t)2)
   {
-    printf("Wrong args\n");
+    printf("Wrong args NDI\n");
     return NULL;
   }
 
@@ -28,7 +28,7 @@ napi_value changeRoutingSource(napi_env env, napi_callback_info info)
   status = napi_typeof(env, args[0], &type);
   if (type != napi_string)
   {
-    printf("Wrong type \n");
+    printf("Wrong type - NDI source \n");
     return NULL;
   }
 
@@ -48,7 +48,7 @@ napi_value changeRoutingSource(napi_env env, napi_callback_info info)
 
   NDIlib_routing_change(pNDI_routing[target_index], ndi_source);
 
-  printf("Changing Target Index %i to Source %s", target_index, source);
+  printf("Changing Target Index %i to Source %s \n", target_index, source);
   napi_value str;
   status = napi_create_string_utf8(env, "hello world", NAPI_AUTO_LENGTH, &str);
   assert(status == napi_ok);
@@ -78,7 +78,7 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
   status = napi_typeof(env, args[0], &type);
   if (type != napi_string)
   {
-    printf("Wrong type \n");
+    printf("Wrong type - NDI source \n");
     return NULL;
   }
 
@@ -94,7 +94,7 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
   status = napi_typeof(env, args[1], &type);
   if (type != napi_string)
   {
-    printf("Wrong type \n");
+    printf("Wrong type - NDI Target \n");
     return NULL;
   }
 

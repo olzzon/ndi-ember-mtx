@@ -1,73 +1,74 @@
 {
-  "name": "ndi-ember-mtx",
-  "version": "0.0.1",
-  "description": "NDI Matrice controlled with Ember for VSM integration",
-  "main": "dist/index.js",
-  "contributors": [
-    {
-      "name": "Kasper Olsson Hans",
-      "url": "https://github.com/olzzon"
+    "name": "ndi-ember-mtx",
+    "version": "0.0.1",
+    "description": "NDI Matrice controlled with Ember for VSM integration",
+    "main": "dist/server/index.js",
+    "contributors": [
+        {
+            "name": "Kasper Olsson Hans",
+            "url": "https://github.com/olzzon"
+        },
+        {
+            "name": "Streampunk Media",
+            "url": "http://www.streampunk.media"
+        }
+    ],
+    "scripts": {
+        "watch-server": "tsc -p src/server -watch",
+        "watch-client": "cross-env NODE_ENV=development TS_NODE_PROJECT=\"src/client/tsconfig.json\" webpack --watch",
+        "build-watch": "yarn watch-server & watch-client & build-admin",
+        "build": "yarn build-client && yarn build-server",
+        "build-server": "tsc -p ./src/server",
+        "build-client": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"./src/client/tsconfig.json\" webpack && cp ./src/client/index.html ./build/client/index.html",
+        "start": "node build/server/index.js",
+        "start-dev": "node --inspect ./build/server/server.js",
+        "start-break": "node --inspect-brk ./build/server/server.js",
+        "release": "standard-version",
+        "prepareChangelog": "standard-version --prerelease",
+        "rebuild": "node-pre-gyp install --build-from-source",
+        "inspect": "node --inspect dist/index.js",
+        "validate:dependencies": "yarn audit",
+        "license-validate": "node-license-validator -p -d --allow-licenses MIT MIT/X11 BSD BSD-3-Clause BSD-2-Clause ISC Apache Apache-2.0 Unlicense --allow-packages cycle"
     },
-    {
-      "name": "Streampunk Media",
-      "url": "http://www.streampunk.media"
+    "gypfile": true,
+    "license": "MIT",
+    "dependencies": {
+        "bindings": "^1.5.0",
+        "express": "^4.17.1",
+        "node-emberplus": "^2.5.10",
+        "node-pre-gyp": "^0.17.0",
+        "socket.io-client": "^4.1.3",
+        "socketio": "^1.0.0",
+        "winston": "^3.3.3"
+    },
+    "resolutions": {
+        "minimist": "^1.2.3"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.13",
+        "@types/jest": "^26.0.24",
+        "@types/node": "^16.3.2",
+        "@types/react": "^17.0.14",
+        "@types/react-dom": "^17.0.9",
+        "@types/underscore": "^1.8.13",
+        "codecov": "^3.6.1",
+        "cross-env": "^7.0.3",
+        "css-loader": "^6.2.0",
+        "jest": "^27.0.6",
+        "jest-haste-map": "^24.5.0",
+        "jest-resolve": "^24.5.0",
+        "node-gyp": "^8.1.0",
+        "node-license-validator": "^1.3.0",
+        "npm-scripts-info": "^0.3.9",
+        "prettier": "2.3.2",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "standard-version": "^9.3.0",
+        "style-loader": "^3.2.1",
+        "ts-jest": "^26.4.1",
+        "ts-loader": "^9.2.3",
+        "typescript": "^4.3.5",
+        "webpack": "^5.45.1",
+        "webpack-cli": "^4.7.2"
     }
-  ],
-  "author": "Olzzon",
-  "scripts": {
-    "build": "yarn build:main",
-    "buildstart": "yarn build && yarn start",
-    "buildstart:dev": "yarn build && DEV=true yarn start",
-    "buildinspect": "yarn build && yarn inspect",
-    "buildinspect:dev": "yarn build && DEV=true yarn inspect",
-    "build:main": "tsc -p tsconfig.json",
-    "rebuild": "node-pre-gyp install --build-from-source",
-    "lint": "prettier --check .",
-    "unit": "jest",
-    "test": "yarn lint && yarn unit",
-    "test:integration": "yarn lint && jest --config=jest-integration.config.js",
-    "watch": "jest --watch",
-    "cov": "jest; open-cli coverage/lcov-report/index.html",
-    "cov-open": "open-cli coverage/lcov-report/index.html",
-    "send-coverage": "jest && codecov",
-    "docs": "yarn docs:html && open-cli docs/index.html",
-    "docs:html": "typedoc src/index.ts --excludePrivate --mode file --theme minimal --out docs",
-    "docs:json": "typedoc --mode file --json docs/typedoc.json src/index.ts",
-    "docs:publish": "yarn docs:html && gh-pages -d docs",
-    "changelog": "standard-version",
-    "inspect": "node --inspect dist/index.js",
-    "release": "yarn reset && yarn test && yarn changelog",
-    "reset": "git clean -dfx && git reset --hard && yarn",
-    "ci": "yarn test",
-    "validate:dependencies": "yarn audit",
-    "license-validate": "node-license-validator -p -d --allow-licenses MIT MIT/X11 BSD BSD-3-Clause BSD-2-Clause ISC Apache Apache-2.0 Unlicense --allow-packages cycle",
-    "start": "node dist/index.js",
-    "debug": "node --inspect dist/index.js",
-    "unlinkall": "yarn unlink tv-automation-server-core-integration && yarn --check-files"
-  },
-  "gypfile": true,
-  "license": "MIT",
-  "dependencies": {
-    "bindings": "^1.5.0",
-    "node-pre-gyp": "^0.17.0"
-  },
-  "resolutions": {
-    "minimist": "^1.2.3"
-  },
-  "devDependencies": {
-    "@types/jest": "^26.0.24",
-    "@types/node": "^16.3.2",
-    "@types/underscore": "^1.8.13",
-    "codecov": "^3.6.1",
-    "jest": "^27.0.6",
-    "jest-haste-map": "^24.5.0",
-    "jest-resolve": "^24.5.0",
-    "node-gyp": "^8.1.0",
-    "node-license-validator": "^1.3.0",
-    "npm-scripts-info": "^0.3.9",
-    "prettier": "2.3.2",
-    "standard-version": "^9.3.0",
-    "ts-jest": "^26.4.1",
-    "typescript": "^4.3.5"
-  }
 }

@@ -17,6 +17,7 @@ DEFS_Debug := \
 	'-DV8_DEPRECATION_WARNINGS=1' \
 	'-DV8_DEPRECATION_WARNINGS' \
 	'-DV8_IMMINENT_DEPRECATION_WARNINGS' \
+	'-D_GLIBCXX_USE_CXX11_ABI=1' \
 	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
@@ -31,7 +32,7 @@ DEFS_Debug := \
 CFLAGS_Debug := \
 	-O0 \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.10 \
+	-mmacosx-version-min=10.13 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -44,7 +45,7 @@ CFLAGS_C_Debug := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Debug := \
-	-std=gnu++1y \
+	-std=gnu++14 \
 	-stdlib=libc++ \
 	-fno-rtti \
 	-fno-exceptions \
@@ -59,13 +60,13 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/include/node \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/src \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/deps/openssl/config \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/deps/openssl/openssl/include \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/deps/uv/include \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/deps/zlib \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/deps/v8/include \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/include/node \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/src \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/deps/openssl/config \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/deps/openssl/openssl/include \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/deps/uv/include \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/deps/zlib \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/deps/v8/include \
 	-I$(srcdir)/include
 
 DEFS_Release := \
@@ -75,6 +76,7 @@ DEFS_Release := \
 	'-DV8_DEPRECATION_WARNINGS=1' \
 	'-DV8_DEPRECATION_WARNINGS' \
 	'-DV8_IMMINENT_DEPRECATION_WARNINGS' \
+	'-D_GLIBCXX_USE_CXX11_ABI=1' \
 	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
@@ -86,7 +88,7 @@ DEFS_Release := \
 CFLAGS_Release := \
 	-O3 \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.10 \
+	-mmacosx-version-min=10.13 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -99,7 +101,7 @@ CFLAGS_C_Release := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Release := \
-	-std=gnu++1y \
+	-std=gnu++14 \
 	-stdlib=libc++ \
 	-fno-rtti \
 	-fno-exceptions \
@@ -114,13 +116,13 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/include/node \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/src \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/deps/openssl/config \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/deps/openssl/openssl/include \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/deps/uv/include \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/deps/zlib \
-	-I/Users/olzzon/Library/Caches/node-gyp/12.22.1/deps/v8/include \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/include/node \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/src \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/deps/openssl/config \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/deps/openssl/openssl/include \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/deps/uv/include \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/deps/zlib \
+	-I/Users/olzzon/Library/Caches/node-gyp/16.4.2/deps/v8/include \
 	-I$(srcdir)/include
 
 OBJS := \
@@ -164,9 +166,8 @@ $(binding_gyp_ndi_mtx_target_copies): |
 LDFLAGS_Debug := \
 	-Wl,-rpath,/Users/olzzon/coding/ndi-ember-mtx/build/Release \
 	-undefined dynamic_lookup \
-	-Wl,-no_pie \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.10 \
+	-mmacosx-version-min=10.13 \
 	-arch x86_64 \
 	-L$(builddir) \
 	-stdlib=libc++
@@ -174,15 +175,13 @@ LDFLAGS_Debug := \
 LIBTOOLFLAGS_Debug := \
 	-Wl,-rpath,/Users/olzzon/coding/ndi-ember-mtx/build/Release \
 	-undefined dynamic_lookup \
-	-Wl,-no_pie \
 	-Wl,-search_paths_first
 
 LDFLAGS_Release := \
 	-Wl,-rpath,/Users/olzzon/coding/ndi-ember-mtx/build/Release \
 	-undefined dynamic_lookup \
-	-Wl,-no_pie \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.10 \
+	-mmacosx-version-min=10.13 \
 	-arch x86_64 \
 	-L$(builddir) \
 	-stdlib=libc++
@@ -190,7 +189,6 @@ LDFLAGS_Release := \
 LIBTOOLFLAGS_Release := \
 	-Wl,-rpath,/Users/olzzon/coding/ndi-ember-mtx/build/Release \
 	-undefined dynamic_lookup \
-	-Wl,-no_pie \
 	-Wl,-search_paths_first
 
 LIBS := \
