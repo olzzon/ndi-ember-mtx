@@ -2,6 +2,7 @@ import { emberLocalClient, setMatrixConnection } from "./ember/emberLocalClient"
 import { emberMtxServer } from "./ember/emberServer"
 import { setEmberCrossPoints } from "./utils/setEmberCrossPoints"
 import { webServer } from "./webserver/webServer"
+import { ISource, ITarget} from '../models/interfaces'
 
 const ndi_mtx = require('bindings')('ndi_mtx')
 
@@ -9,42 +10,38 @@ emberMtxServer()
 emberLocalClient()
 
 // These will be moved to a file:
-let sources = [
+let sources: ISource[] = [
     {
-        name: '',
+        label: 'SOURCE1',
         url: '192.168.0.12:5961'
     },
     {
-        name: '',
+        label: 'SOURCE2',
         url: '127.0.0.1:5961'
     }
 ]
 
-let targets = [
+let targets: ITarget[] = [
     {
-        index: 0,
-        name: "RED207"
+        source: 0,
+        label: "RED207"
     },
     {
-        index: 1,
-        name: "RED208"
+        source: 1,
+        label: "RED208"
     }
 ]
 
-let crossPoints = [
-{target: 0,source: 1},
-{target: 1,source: 0},
-]
-setEmberCrossPoints(crossPoints)
+setEmberCrossPoints(targets)
 
 let source = 0
 let target = 0
 setMatrixConnection(source, target)
-ndi_mtx.initializeRouting(sources[source].url, targets[target].name, target)
+ndi_mtx.initializeRouting(sources[source].url, targets[target].label, target)
 let source1 = 1
 let target1 = 1
 // setMatrixConnection(source, target)
-ndi_mtx.initializeRouting(sources[source1].url, targets[target1].name, target1)
+ndi_mtx.initializeRouting(sources[source1].url, targets[target1].label, target1)
 
 setInterval(() => {
     console.log('change source in loop')
@@ -57,6 +54,6 @@ setInterval(() => {
 
 }, 20000)
 
-webServer(sources, targets, crossPoints)
+webServer(sources, targets)
 
 

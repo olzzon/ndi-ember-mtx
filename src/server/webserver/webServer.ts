@@ -6,11 +6,11 @@ const path = require('path')
 
 import { logger } from '../utils/logger'
 import * as IO from '../../models/SOCKET_IO_CONTANTS'
+import { ISource, ITarget } from '../../models/interfaces'
 
 export const webServer = (
-    sources: any[],
-    targets: any[],
-    crossPoints: any[]
+    sources: ISource[],
+    targets: ITarget[]
 ) => {
     const socketConnection = () => {
         let socketClients: any[] = []
@@ -20,6 +20,7 @@ export const webServer = (
             socketClients.push({
                 id: socket.id,
             })
+            socket.emit(IO.UPDATE_CLIENT, sources, targets)
 
             socket.on('disconnecting', () => {
                 socketClients = socketClients.filter((client) => {
@@ -29,12 +30,6 @@ export const webServer = (
 
             socket.once('disconnect', () => {
                 logger.debug(`Socket with id: ${socket.id} disconnected`)
-            })
-
-            socket.on('get_state', () => {
-                socket.emit('sources', sources)
-                socket.emit('targets', targets)
-                socket.emit('crosspoints', crossPoints)
             })
 
             socket.on(IO.RESTART_SERVER, () => {
