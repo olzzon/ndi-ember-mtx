@@ -6,9 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
+# Build dir
+build/
 
 # Dependency directories
 node_modules/
@@ -22,6 +21,3 @@ node_modules/
 
 # Yarn Integrity file
 .yarn-integrity
-
-dist
-build

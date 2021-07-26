@@ -23,11 +23,11 @@ let sources = [
 let targets = [
     {
         index: 0,
-        name: "trg1"
+        name: "RED207"
     },
     {
         index: 1,
-        name: "trg2"
+        name: "RED208"
     }
 ]
 
@@ -55,7 +55,7 @@ setInterval(() => {
     // setMatrixConnection(source, target)
     ndi_mtx.changeRoutingSource(sources[source1].url, target1)
 
-}, 8000)
+}, 20000)
 
 webServer(sources, targets, crossPoints)
 

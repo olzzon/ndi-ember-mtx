@@ -1,14 +1,15 @@
 import '../styles/MainPage.css'
+import * as IO from '../../models/SOCKET_IO_CONTANTS'
 
-import React, { useState, useEffect } from 'react'
-//@ts-ignore
-import Files from 'react-files'
-import { io } from 'socket.io-client'
+import React from 'react'
+import io from 'socket.io-client'
 
 const userUrlId =
     new URLSearchParams(window.location.search).get('username') || ''
-// @ts-ignore
-const socket = io({ extraHeaders: { userurl: userUrlId } })
+const socketClient = io()
+socketClient.on('connect', () => {
+    console.log('Connected to NDI-MTX')
+})
 
 const MainPage = () => {
 
@@ -57,7 +58,8 @@ const MainPage = () => {
     }
 
     const handleRestartServer = () => {
-        socket.emit('restart_server')
+        console.log('RESTARTING SERVER')
+        socketClient.emit(IO.RESTART_SERVER)
     }
 
     return (

@@ -21,7 +21,7 @@
       "esModuleInterop": true,
       "resolveJsonModule": true,
       "isolatedModules": true,
-      "outDir": "../../build/server",
+      "outDir": "../../build",
       "noEmit": false
     },
     "exclude": [
