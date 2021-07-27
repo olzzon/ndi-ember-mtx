@@ -7,6 +7,7 @@ const path = require('path')
 import { logger } from '../utils/logger'
 import * as IO from '../../models/SOCKET_IO_CONTANTS'
 import { ISource, ITarget } from '../../models/interfaces'
+import { changeNdiRoutingSource } from '../ndi/ndiMatrice'
 
 export const webServer = (
     sources: ISource[],
@@ -30,6 +31,10 @@ export const webServer = (
 
             socket.once('disconnect', () => {
                 logger.debug(`Socket with id: ${socket.id} disconnected`)
+            })
+            socket.on(IO.CHANGE_SOURCE, (sourceIndex: number, targetIndex: number) => {
+                logger.info('Target : ' + targetIndex + ' Changed to Source : ' + sourceIndex )
+                changeNdiRoutingSource(sources[sourceIndex].url, targetIndex)
             })
 
             socket.on(IO.RESTART_SERVER, () => {

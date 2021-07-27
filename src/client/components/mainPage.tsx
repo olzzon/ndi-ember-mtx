@@ -26,8 +26,13 @@ const MainPage = () => {
 
     const handleChangeSource = (
         event: React.ChangeEvent<HTMLSelectElement>,
-        index: number
-    ) => {}
+        targetIndex: number
+    ) => {
+        let selectedSource = event.target.selectedIndex
+        targets[targetIndex].source = selectedSource
+        setTargets([...targets])
+        socketClient.emit(IO.CHANGE_SOURCE, selectedSource, targetIndex)
+    }
 
     const handleTargetLabelInput = (
         event: React.ChangeEvent<HTMLInputElement>,
@@ -47,15 +52,15 @@ const MainPage = () => {
     const renderTarget = () => {
         return (
             <React.Fragment>
-                {targets.map((target, index) => {
+                {targets.map((target, targetIndex) => {
                     return (
                             <form>
-                                Target Index : {index}
+                                Target Index : {targetIndex}
                                 <label className={'inputlabel'}>
                                     Source :
                                     <select
                                         onChange={(event) =>
-                                            handleChangeSource(event, index)
+                                            handleChangeSource(event, targetIndex)
                                         }
                                     >
                                         {sources.map(
@@ -87,10 +92,11 @@ const MainPage = () => {
                                         type="text"
                                         value={target.label}
                                         onChange={(event) =>
-                                            handleTargetLabelInput(event, index)
+                                            handleTargetLabelInput(event, targetIndex)
                                         }
                                     />
                                 </label>
+                                DEBUG : {target.source}
                             </form>
                     )
                 })}
