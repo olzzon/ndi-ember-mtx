@@ -10,6 +10,7 @@ body {
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     justify-content: center;
     align-items: center;
+    display: felx;
 }
 
 input[type='text'] {
@@ -66,7 +67,18 @@ select {
     font-size: 1.6rem;
     align-items: center;
 }
-.pageslist {
+.targetlist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    width: 100vw;
+    font-size: 1.4rem;
+    align-items: center;
+}
+
+.buttons {
     display: flex;
     align-items: center;
     justify-content: center;

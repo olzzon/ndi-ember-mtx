@@ -12,11 +12,11 @@ emberLocalClient()
 // These will be moved to a file:
 let sources: ISource[] = [
     {
-        label: 'SOURCE1',
+        label: 'AVID 101',
         url: '192.168.0.12:5961'
     },
     {
-        label: 'SOURCE2',
+        label: 'AVID 102',
         url: '127.0.0.1:5963'
     }
 ]
