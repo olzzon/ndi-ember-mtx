@@ -33,3 +33,23 @@ export const loadTargetList = (): ITarget[] => {
     }
     return targets
 }
+
+export const updateTargetList = (targets: ITarget[]) => {
+    let json = JSON.stringify(targets)
+    if (!fs.existsSync('storage')) {
+        fs.mkdirSync('storage')
+    }
+    fs.writeFile(
+        path.resolve('storage', 'targets.json'),
+        json,
+        'utf8',
+        (error: any) => {
+            if( error) {
+               logger.error('Error writing targets.json file')
+                console.log('Error writing targets.json file: ', error)
+            }
+            else
+            { logger.info('targets.json file updated')}
+        }
+    )
+}

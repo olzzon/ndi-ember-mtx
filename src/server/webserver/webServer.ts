@@ -10,6 +10,7 @@ import { ISource, ITarget } from '../../models/interfaces'
 import { changeNdiRoutingSource } from '../ndi/ndiMatrice'
 import { setMatrixConnection } from '../ember/emberLocalClient'
 import { emberServer } from '../ember/emberServer'
+import { updateTargetList } from '../utils/storage'
 
 let socketClients: any[] = []
 
@@ -60,6 +61,7 @@ export const webServer = (sources: ISource[], targets: ITarget[]) => {
                 targets[info.target - 1].selectedSource = parseInt(info.sources)
                 changeNdiRoutingSource(sources[info.sources].url, info.target - 1)
                 socketServer.emit(IO.UPDATE_CLIENT, sources, targets)
+                updateTargetList(targets)
             })
     }
 
