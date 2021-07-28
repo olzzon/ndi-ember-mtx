@@ -1,0 +1,45 @@
+.matrix {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+    width: 10vw;
+    color: aqua;
+}
+
+
+.matrixsources {
+    flex-direction: row;
+}
+
+.matrixsourcelabel {
+    max-width: 10vw;
+    font-size: 120%;
+}
+
+
+.matrixsource {
+    font-size: 120%;
+}
+
+.matrixtarget {
+    flex-direction: column;
+}
+
+.matrix_target_label {
+    direction: rtl;
+    transform: rotate(90deg);
+    font-size: 100%;
+    height: 2vw;
+    margin-bottom: 1vh;
+}
+
+.matrix_connection {
+    color: white;
+    background-color: rgb(73, 73, 73);
+    margin-top: 1vh;
+    margin-left: 1vw;
+    height: 3vh;
+    width: 3vw;
+    font-size: 1.4rem;
+}

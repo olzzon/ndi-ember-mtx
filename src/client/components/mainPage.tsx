@@ -37,7 +37,7 @@ const MainPage = () => {
         targetIndex: number
     ) => {
         let selectedSource = event.target.selectedIndex
-        targets[targetIndex].source = selectedSource
+        targets[targetIndex].selectedSource = selectedSource
         setTargets([...targets])
         socketClient.emit(IO.CHANGE_SOURCE, selectedSource, targetIndex)
     }
@@ -57,7 +57,7 @@ const MainPage = () => {
             <React.Fragment>
                 {targets.map((target, targetIndex) => {
                     return (
-                        <form className="targetlist">
+                        <form key={ targetIndex} className="targetlist">
                             <label className={'inputlabel'}>
                                 Source :
                                 <select
@@ -73,11 +73,11 @@ const MainPage = () => {
                                             return (
                                                 <option
                                                     selected={
-                                                        target.source ===
+                                                        target.selectedSource ===
                                                         sourceIndex
                                                     }
                                                     key={sourceIndex}
-                                                    value={target.source}
+                                                    value={target.selectedSource}
                                                 >
                                                     {source.label}
                                                 </option>

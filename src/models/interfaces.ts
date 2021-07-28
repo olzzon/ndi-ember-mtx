@@ -5,5 +5,5 @@ export interface ISource {
 
 export interface ITarget {
     label: string
-    source: number
+    selectedSource: number
 }
