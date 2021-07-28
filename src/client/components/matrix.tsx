@@ -39,14 +39,8 @@ const Matrix = () => {
         let selectedSource = event.target.selectedIndex
         console.log('Change Source Label', sources[selectedSource])
     }
-    const handleChangeSource = (
-        event: React.ChangeEvent<HTMLSelectElement>,
-        targetIndex: number
-    ) => {
-        let selectedSource = event.target.selectedIndex
-        targets[targetIndex].selectedSource = selectedSource
-        setTargets([...targets])
-        socketClient.emit(IO.CHANGE_SOURCE, selectedSource, targetIndex)
+    const handleChangeSource = (sourceIndex: number, targetIndex: number) => {
+        socketClient.emit(IO.CHANGE_SOURCE, sourceIndex, targetIndex)
     }
 
     const handleTargetLabelInput = (
@@ -54,23 +48,14 @@ const Matrix = () => {
         index: number
     ) => {}
 
-    const handleRestartServer = () => {
-        console.log('RESTARTING SERVER')
-        socketClient.emit(IO.RESTART_SERVER)
-    }
-
     const renderSources = () => {
         return (
             <div className="matrixsources">
-                Source :
+                <div className="matrix_source_target_label">Source\Target</div>
                 {sources.map((source, sourceIndex) => {
                     return (
                         <form key={sourceIndex} className="matrixsource">
-                            <label>
-                                <option key={sourceIndex} value={sourceIndex}>
-                                    {source.label}
-                                </option>
-                            </label>
+                            {source.label}
                         </form>
                     )
                 })}
@@ -80,31 +65,43 @@ const Matrix = () => {
 
     const renderTargets = () => {
         return (
-            <div className="matrix">
+            <div className="matrixtargets">
                 {targets.map((target, targetIndex) => {
                     return (
-                        <form key={targetIndex}>
+                        <div key={targetIndex}>
                             <div
                                 className={'matrix_target_label'}
                                 onChange={(event) =>
                                     handleTargetLabelInput(event, targetIndex)
-                                }>
-                            {target.label}
+                                }
+                            >
+                                {target.label}
                             </div>
-
-                            <label className={'inputlabel'}>
-                                {sources.map(
-                                    (source: ISource, sourceIndex: number) => {
-                                        return (
-                                            <button key={sourceIndex} className="matrix_connection">
-                                                {target.selectedSource === sourceIndex ? "X" : <React.Fragment/>}
-                                            </button>
-                                        )
-                                    }
-                                )}
-                            </label>
+                            {sources.map(
+                                (source: ISource, sourceIndex: number) => {
+                                    return (
+                                        <button
+                                            key={sourceIndex}
+                                            className="matrix_connection_botton"
+                                            onClick={() =>
+                                                handleChangeSource(
+                                                    sourceIndex,
+                                                    targetIndex
+                                                )
+                                            }
+                                        >
+                                            {target.selectedSource ===
+                                            sourceIndex ? (
+                                                'X'
+                                            ) : (
+                                                <React.Fragment />
+                                            )}
+                                        </button>
+                                    )
+                                }
+                            )}
                             <br />
-                        </form>
+                        </div>
                     )
                 })}
             </div>

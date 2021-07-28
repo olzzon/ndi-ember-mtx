@@ -34,7 +34,9 @@ export const webServer = (
             })
             socket.on(IO.CHANGE_SOURCE, (sourceIndex: number, targetIndex: number) => {
                 logger.info('Target : ' + targetIndex + ' Changed to Source : ' + sourceIndex )
+                targets[targetIndex].selectedSource = sourceIndex
                 changeNdiRoutingSource(sources[sourceIndex].url, targetIndex)
+                socket.emit(IO.UPDATE_CLIENT, sources, targets)
             })
 
             socket.on(IO.RESTART_SERVER, () => {
