@@ -49,14 +49,9 @@ export const webServer = (sources: ISource[], targets: ITarget[]) => {
 
     const emberServerConnetion = () => {
         emberServer
-            .on('matrix-change', (info: any) => {
-                console.log(
-                    `Ember Client ${info.client} changed ${info.target} and ${info.sources}`
-                )
-            })
             .on('matrix-connect', (info) => {
-                console.log(
-                    `Ember Client ${info.client} connected target : ${info.target} with source : ${info.sources}`
+                logger.info(
+                    `Ember Client ${info.client} changed target : ${info.target} using source : ${info.sources}`
                 )
                 targets[info.target - 1].selectedSource = parseInt(info.sources)
                 changeNdiRoutingSource(sources[info.sources].url, info.target - 1)

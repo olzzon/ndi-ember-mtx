@@ -27,25 +27,10 @@ export const initializeEmberServer = () => {
     emberServer
         .listen()
         .then(() => {
-            console.log('Ember Server is listening')
+            logger.info('Ember Server is listening on port : 9000')
         })
         .catch((error: Error) => {
             console.log(error.stack)
         })
 }
 
-const emberStateToFile = () => {
-    let json = JSON.stringify(emberServer.toJSON())
-    logger.info('Updating emberstate in file')
-    fs.writeFile(
-        path.resolve('embertree.json'),
-        json,
-        'utf8',
-        (error: Error) => {
-            if (error) {
-                console.log(error)
-                logger.error('Error writing Ember-dump file')
-            }
-        }
-    )
-}

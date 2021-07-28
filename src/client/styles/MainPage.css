@@ -10,7 +10,7 @@ body {
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     justify-content: center;
     align-items: center;
-    display: felx;
+    display: flex;
 }
 
 .inputlabel {
@@ -38,16 +38,13 @@ body {
     flex-wrap: wrap;
     margin-top: 5vh;
     margin-bottom: 5vh;
-    width: 100vw;
+    width: 50vw;
     font-size: 1.6rem;
     align-items: center;
 }
 
 .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+
     margin-top: 3vh;
     margin-bottom: 3vh;
     width: 100vw;
@@ -57,8 +54,9 @@ body {
 
 .button {
     color: white;
-    background-color: rgb(73, 73, 73);
+    background-color: rgb(59, 0, 0);
     margin: 2vh;
+    width: 20vw;
     font-size: 1.4rem;
 }
 

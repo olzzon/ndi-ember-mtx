@@ -3,12 +3,7 @@ import * as IO from '../../models/SOCKET_IO_CONTANTS'
 import { ISource, ITarget } from '../../models/interfaces'
 
 import React, { useEffect, useState } from 'react'
-import io from 'socket.io-client'
-
-const socketClient = io()
-socketClient.on('connect', () => {
-    console.log('Connected to NDI-MTX')
-})
+import { socketClient } from './mainPage'
 
 const Matrix = () => {
     const [targets, setTargets] = useState<ITarget[]>([])
@@ -34,6 +29,10 @@ const Matrix = () => {
 
     const handleChangeSource = (sourceIndex: number, targetIndex: number) => {
         socketClient.emit(IO.CHANGE_SOURCE, sourceIndex, targetIndex)
+    }
+
+    const handleRestartServer = () => {
+        console.log('RESTARTING SERVER')
     }
 
     const renderSources = () => {
