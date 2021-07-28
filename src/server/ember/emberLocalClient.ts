@@ -18,7 +18,6 @@ export const setMatrixConnection = (sourceIndex: number, targetIndex: number) =>
         client.getElementByPath('0.1.0')
         .then((matrix: any) => {
             client.matrixConnect(matrix, targetIndex + 1, [sourceIndex])
-            console.log('Matrix Connection changed')
         })
         .catch((error: any)=> {
             console.log(error)

@@ -32,21 +32,9 @@ const Matrix = () => {
         }
     }, [socketClient])
 
-    const handleSourceLabel = (
-        event: React.ChangeEvent<HTMLSelectElement>,
-        targetIndex: number
-    ) => {
-        let selectedSource = event.target.selectedIndex
-        console.log('Change Source Label', sources[selectedSource])
-    }
     const handleChangeSource = (sourceIndex: number, targetIndex: number) => {
         socketClient.emit(IO.CHANGE_SOURCE, sourceIndex, targetIndex)
     }
-
-    const handleTargetLabelInput = (
-        event: React.ChangeEvent<any>,
-        index: number
-    ) => {}
 
     const renderSources = () => {
         return (
@@ -71,9 +59,6 @@ const Matrix = () => {
                         <div key={targetIndex}>
                             <div
                                 className={'matrix_target_label'}
-                                onChange={(event) =>
-                                    handleTargetLabelInput(event, targetIndex)
-                                }
                             >
                                 {target.label}
                             </div>

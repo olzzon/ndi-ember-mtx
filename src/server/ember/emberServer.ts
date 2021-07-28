@@ -6,15 +6,12 @@ const path = require('path')
 import { EmberServer } from 'node-emberplus'
 import { root } from './emberServerTree'
 
-const emberServer = new EmberServer('0.0.0.0', 9000, root) // start server on port 9000
+export const emberServer = new EmberServer('0.0.0.0', 9000, root) // start server on port 9000
 
-export const emberMtxServer = () => {
+export const initializeEmberServer = () => {
     logger.info('Setting up Ember Server')
 
     emberServer
-        .on('event', (event: any) => {
-            console.log('Ember Server Event received : ', event)
-        })
         .on('error', (error: any) => {
             if (
                 (error.message + '').match(/econnrefused/i) ||
@@ -25,9 +22,6 @@ export const emberMtxServer = () => {
                 logger.error('Ember connection unknown error' + error.message)
             }
         })
-        .on("matrix-change", (info: any) => {
-            console.log(`Client ${info.client} changed ${info.target} and ${info.sources}`);
-         })
     logger.info('Setting up Ember Server')
 
     emberServer

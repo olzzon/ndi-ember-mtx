@@ -8,13 +8,13 @@ import { logger } from '../utils/logger'
 import * as IO from '../../models/SOCKET_IO_CONTANTS'
 import { ISource, ITarget } from '../../models/interfaces'
 import { changeNdiRoutingSource } from '../ndi/ndiMatrice'
+import { setMatrixConnection } from '../ember/emberLocalClient'
+import { emberServer } from '../ember/emberServer'
 
-export const webServer = (
-    sources: ISource[],
-    targets: ITarget[]
-) => {
-    const socketConnection = () => {
-        let socketClients: any[] = []
+let socketClients: any[] = []
+
+export const webServer = (sources: ISource[], targets: ITarget[]) => {
+    const socketServerConnection = () => {
         // socket.io server
         socketServer.on('connection', (socket: any) => {
             logger.info('Client connected :' + socket.id)
@@ -32,12 +32,12 @@ export const webServer = (
             socket.once('disconnect', () => {
                 logger.debug(`Socket with id: ${socket.id} disconnected`)
             })
-            socket.on(IO.CHANGE_SOURCE, (sourceIndex: number, targetIndex: number) => {
-                logger.info('Target : ' + targetIndex + ' Changed to Source : ' + sourceIndex )
-                targets[targetIndex].selectedSource = sourceIndex
-                changeNdiRoutingSource(sources[sourceIndex].url, targetIndex)
-                socket.emit(IO.UPDATE_CLIENT, sources, targets)
-            })
+            socket.on(
+                IO.CHANGE_SOURCE,
+                (sourceIndex: number, targetIndex: number) => {
+                    setMatrixConnection(sourceIndex, targetIndex)
+                }
+            )
 
             socket.on(IO.RESTART_SERVER, () => {
                 logger.info('Restart SERVER!')
@@ -45,6 +45,24 @@ export const webServer = (
             })
         })
     }
+
+    const emberServerConnetion = () => {
+        emberServer
+            .on('matrix-change', (info: any) => {
+                console.log(
+                    `Ember Client ${info.client} changed ${info.target} and ${info.sources}`
+                )
+            })
+            .on('matrix-connect', (info) => {
+                console.log(
+                    `Ember Client ${info.client} connected target : ${info.target} with source : ${info.sources}`
+                )
+                targets[info.target - 1].selectedSource = parseInt(info.sources)
+                changeNdiRoutingSource(sources[info.sources].url, info.target - 1)
+                socketServer.emit(IO.UPDATE_CLIENT, sources, targets)
+            })
+    }
+
     const port: number = parseInt(process.env.PORT || '3008') || 3008
     app.use('/', express.static(path.join(__dirname, '../../client')))
     server.listen(port)
@@ -55,5 +73,7 @@ export const webServer = (
             res.sendFile(path.resolve('index.html'))
         })
     })
-    socketConnection()
+
+    socketServerConnection()
+    emberServerConnetion()
 }
