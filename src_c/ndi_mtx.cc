@@ -124,7 +124,6 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
     NDIlib_routing_change(pNDI_routing[target_index], ndi_source);
 
     printf("NDI Routing initialized!!!! \n");
-    napi_value str;
     status = napi_create_string_utf8(env, "completed", NAPI_AUTO_LENGTH, &result);
 
     assert(status == napi_ok);
