@@ -39,7 +39,7 @@ const MainPage = () => {
                     {serverOnline ? (
                         <React.Fragment>SERVER ONLINE</React.Fragment>
                     ) : (
-                        <React.Fragment>RESTART SERVER</React.Fragment>
+                        <React.Fragment>SERVER OFFLINE</React.Fragment>
                     )}
                 </button>
             </div>
