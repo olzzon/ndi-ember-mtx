@@ -15,7 +15,7 @@ jobs:
           no_output_timeout: 60m
       - run:
           name: install node-gyp
-          command: yarn install -g node-gyp
+          command: yarn global add node-gyp
           no_output_timeout: 60m
       - run:
           name: yarn install
