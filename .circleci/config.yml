@@ -23,7 +23,7 @@ jobs:
           no_output_timeout: 60m
       - run:
           name: install libavahi-client-dev
-          command: sudo yarn global add libavahi-client-dev
+          command: sudo apt install libavahi-client-dev
           no_output_timeout: 60m
       - run:
           name: yarn install
