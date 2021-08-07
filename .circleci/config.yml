@@ -10,6 +10,10 @@ jobs:
             - v1-node-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - v1-node-cache-{{ .Branch }}
       - run:
+          name: install update
+          command: sudo apt update
+          no_output_timeout: 60m
+      - run:
           name: install build-essential
           command: sudo apt install build-essential
           no_output_timeout: 60m
