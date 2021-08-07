@@ -26,6 +26,9 @@ jobs:
           command: sudo apt install libavahi-client-dev
           no_output_timeout: 60m
       - run:
+          name: Copy libndi files to /usr/lib/x86_64-linux-gnu
+          cp lib/x86_64-linux-gnu/* /usr/lib/x86_64-linux-gnu
+      - run:
           name: yarn install
           command: yarn install --check-files #--frozen-lockfile
           no_output_timeout: 60m
