@@ -61,6 +61,16 @@
                 ],
                 "library_dirs": [ "lib/x86_64-linux-gnu" ]
                 },
+                "copies": [
+                {
+                    "destination": "build/Release",
+                    "files": [
+                    "lib/x86_64-linux-gnu/libndi.so.3.8.0",
+                    "lib/x86_64-linux-gnu/libndi.so.3",
+                    "lib/x86_64-linux-gnu/libndi.so"
+                    ]
+                }
+              ]
             }]
           ]
         }]
