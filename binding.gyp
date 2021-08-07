@@ -60,8 +60,7 @@
                     "<(module_root_dir)/build/Release/libndi.so"
                 ],
                 "library_dirs": [ "lib/x86_64-linux-gnu" ]
-                }
-              ]
+                },
             }]
           ]
         }]
