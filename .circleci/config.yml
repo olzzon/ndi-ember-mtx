@@ -27,7 +27,7 @@ jobs:
           no_output_timeout: 60m
       - run:
           name: Copy libndi files to /usr/lib/x86_64-linux-gnu
-          command: cp lib/x86_64-linux-gnu/* /usr/lib/x86_64-linux-gnu
+          command: sudo cp lib/x86_64-linux-gnu/* /usr/lib/x86_64-linux-gnu
       - run:
           name: yarn install
           command: yarn install --check-files #--frozen-lockfile
