@@ -48,30 +48,30 @@
                 ]
               },
             }]
-          ],
-        }],
+          ]}
+        ],
         ['OS=="linux"', {
           'conditions': [
             ['target_arch=="x86" or target_arch=="x64"', {
-                "link_settings": {
-                    "libraries": [
-                        "<(module_root_dir)/build/Release/libndi.so.3.8.0",
-                        "<(module_root_dir)/build/Release/libndi.so.3",
-                        "<(module_root_dir)/build/Release/libndi.so"
-                        ],
-                    "library_dirs": [ "lib/x86_64-linux-gnu" ],
-                    "copies": [
-                    {
-                        "destination": "build/Release/",
-                        "files": [
-                        "<!@(ls -1 lib/x86_64-linux-gnu/libndi.so.3.8.0)",
-                        "<!@(ls -1 lib/x86_64-linux-gnu/libndi.so.3)",
-                        "<!@(ls -1 lib/x86_64-linux-gnu/libndi.so)"
-                        ]
-                    }
+              "link_settings": {
+                "libraries": [
+                    "<(module_root_dir)/build/Release/libndi.so.3.8.0",
+                    "<(module_root_dir)/build/Release/libndi.so.3",
+                    "<(module_root_dir)/build/Release/libndi.so"
+                ],
+                "library_dirs": [ "lib/x86_64-linux-gnu" ]
+                },
+                "copies": [
+                {
+                    "destination": "/usr/lib/x86_64-linux-gnu",
+                    "files": [
+                    "lib/x86_64-linux-gnu/libndi.so.3.8.0",
+                    "lib/x86_64-linux-gnu/libndi.so.3",
+                    "lib/x86_64-linux-gnu/libndi.so"
                     ]
                 }
-              }]
+              ]
+            }]
           ]
         }]
       ]

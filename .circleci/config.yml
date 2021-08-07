@@ -18,6 +18,10 @@ jobs:
           command: sudo yarn global add node-gyp
           no_output_timeout: 60m
       - run:
+          name: install libavahi-client-dev
+          command: sudo yarn global add libavahi-client-dev
+          no_output_timeout: 60m
+      - run:
           name: yarn install
           command: yarn install --check-files #--frozen-lockfile
           no_output_timeout: 60m
