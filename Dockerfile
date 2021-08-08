@@ -5,4 +5,6 @@ COPY ./lib/x86_64-linux-gnu /usr/lib
 WORKDIR /opt/ndi-ember-mtx
 EXPOSE 3008/tcp
 EXPOSE 9000/tcp
+EXPOSE 5960-6100/tcp
+EXPOSE 5960-6100/udp
 CMD ["yarn", "start"]
