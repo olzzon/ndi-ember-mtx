@@ -1,4 +1,4 @@
-FROM node:12.22-alpine3.11
+FROM node:16-alpine
 RUN apk update && apk add avahi-libs g++ make libc6-compat gcompat
 COPY . /opt/ndi-ember-mtx
 COPY ./lib/x86_64-linux-gnu /usr/lib
