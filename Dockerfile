@@ -1,5 +1,5 @@
-FROM node:16-alpine
-RUN apk update && apk add avahi-libs g++ make libc6-compat gcompat
+FROM node:16.6-buster
+RUN sudo apt-get update && sudo apt-get install libavahi-common-dev libavahi-client-dev build-essential
 COPY . /opt/ndi-ember-mtx
 COPY ./lib/x86_64-linux-gnu /usr/lib
 WORKDIR /opt/ndi-ember-mtx
