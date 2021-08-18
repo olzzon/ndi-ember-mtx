@@ -43,7 +43,6 @@ napi_value changeRoutingSource(napi_env env, napi_callback_info info)
     ndi_source->p_ndi_name = "";
     ndi_source->p_url_address = source;
 
-    free(source)
 
     int target_index;
     status = napi_get_value_int32(env, args[1], &target_index);
@@ -114,13 +113,11 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
     ndi_source->p_ndi_name = "";
     ndi_source->p_url_address = source;
 
-    free(source)
 
     // Create NDI target
     NDIlib_routing_create_t NDI_send_create_desc;
     NDI_send_create_desc.p_ndi_name = target;
 
-    free(target)
 
     // We create the NDI routing
     pNDI_routing[target_index] = NDIlib_routing_create(&NDI_send_create_desc);
