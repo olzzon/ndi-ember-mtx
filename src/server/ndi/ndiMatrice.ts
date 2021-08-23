@@ -13,8 +13,8 @@ export const initializeNdiRouting = (
     }
 }
 
-export const changeNdiRoutingSource = (dnsSource: string, targetIndex) => {
-    let status = ndi_mtx.changeRoutingSource(dnsSource, targetIndex)
+export const changeNdiRoutingSource = (urlSource: string, dnsSource: string, targetIndex) => {
+    let status = ndi_mtx.changeRoutingSource(urlSource, dnsSource, targetIndex)
     if ('completed' !== status) {
         logger.error(`NDI Error : ${status}`)
     }

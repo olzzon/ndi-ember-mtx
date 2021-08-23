@@ -54,7 +54,7 @@ export const webServer = (sources: ISource[], targets: ITarget[]) => {
                     `Ember Client ${info.client} changed target : ${info.target} using source : ${info.sources}`
                 )
                 targets[info.target - 1].selectedSource = parseInt(info.sources)
-                changeNdiRoutingSource(sources[info.sources].url, info.target - 1)
+                changeNdiRoutingSource(sources[info.sources].url, sources[info.sources].dnsSource, info.target - 1)
                 socketServer.emit(IO.UPDATE_CLIENT, sources, targets)
                 updateTargetList(targets)
             })

@@ -5,8 +5,8 @@ import { logger } from "./logger"
 
 export const setAllCrossPoints = (sources: ISource[], targets: ITarget[]) => {
     targets.forEach((target: ITarget, targetIndex) => {
-        logger.info(`Initializing Crosspoint Source : ${target.selectedSource} Name : ${sources[target.selectedSource].url} to ${target.label}`)
+        logger.info(`Initializing Crosspoint Source : ${target.selectedSource} Name : ${sources[target.selectedSource].dnsSource} to ${target.label}`)
         setMatrixConnection(target.selectedSource, targetIndex)
-        initializeNdiRouting(sources[target.selectedSource].url, targets[targetIndex].label, targetIndex)
+        initializeNdiRouting(sources[target.selectedSource].dnsSource, targets[targetIndex].label, targetIndex)
     })
 }
