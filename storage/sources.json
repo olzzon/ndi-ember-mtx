@@ -1,62 +1,77 @@
 [
     {
-        "label": "AVID 101",
-        "url": "192.168.0.12:5961"
+        "label": "vMix PGM",
+        "dnsSource": "TESTMACHINE (SOURCE1)",
+        "url": "192.168.8.141:5961"
     },
     {
-        "label": "SCANNER",
-        "url": "127.0.0.1:5961"
+        "label": "vMix MV",
+        "dnsSource": "TESTMACHINE (SOURCE2)",
+        "url": "192.168.8.141:5962"
     },
     {
-        "label": "AVID 102",
-        "url": "192.168.0.12:5962"
+        "label": "vMix Aux",
+        "dnsSource": "TESTMACHINE (SOURCE3)",
+        "url": "192.168.8.141:5963"
     },
     {
-        "label": "AVID 103",
-        "url": "192.168.0.12:5962"
+        "label": "vMix",
+        "dnsSource": "TESTMACHINE (SOURCE4)",
+        "url": "192.168.8.141:5964"
     },
     {
         "label": "AVID 104",
+        "dnsSource": "TESTMACHINE (SOURCE5)",
         "url": "192.168.0.12:5962"
     },
     {
         "label": "AVID 105",
+        "dnsSource": "TESTMACHINE (SOURCE6)",
         "url": "192.168.0.12:5962"
     },
     {
         "label": "AVID 106",
+        "dnsSource": "TESTMACHINE (SOURCE7)",
         "url": "192.168.0.12:5962"
     },
     {
         "label": "AVID 107",
+        "dnsSource": "TESTMACHINE (SOURCE8)",
         "url": "192.168.0.12:5962"
     },
     {
         "label": "AVID 108",
+        "dnsSource": "TESTMACHINE (SOURCE9)",
         "url": "192.168.0.12:5962"
     },
     {
         "label": "AVID 109",
+        "dnsSource": "TESTMACHINE (SOURCE10)",
         "url": "192.168.0.12:5962"
     },
     {
         "label": "AVID 110",
+        "dnsSource": "TESTMACHINE (SOURCE11)",
         "url": "192.168.0.12:5962"
     },
     {
         "label": "AVID 111",
+        "dnsSource": "TESTMACHINE (SOURCE12)",
         "url": "192.168.0.12:5962"
     },
     {
         "label": "AVID 112",
+        "dnsSource": "TESTMACHINE (SOURCE13)",
         "url": "192.168.0.12:5962"
     },
     {
         "label": "AVID 113",
+        "dnsSource": "TESTMACHINE (SOURCE14)",
         "url": "192.168.0.12:5962"
     },
     {
         "label": "AVID 114",
+        "dnsSource": "TESTMACHINE (SOURCE15)",
         "url": "192.168.0.12:5962"
     }
 ]
