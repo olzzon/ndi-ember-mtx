@@ -16,6 +16,8 @@ ndi_mtx.cc will build when yarn is called.
 (c compiler on machine is needed)
 ```
 apt-get update && apt-get install -y libavahi-common-dev libavahi-client-dev build-essential
+clone and cd to ndi-ember-mtx folder
+cp ./lib/x86_64-linux-gnu/* /usr/lib/
 yarn
 yarn build-server
 yarn build-client
