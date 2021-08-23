@@ -82,13 +82,13 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
     napi_value result;
 
     // Read arguments passed to promise
-    size_t argc = 3;
-    napi_value args[3];
+    size_t argc = 4;
+    napi_value args[4];
     status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    if (argc != (size_t)3)
+    if (argc != (size_t)4)
     {
-        status = napi_create_string_utf8(env, "Error : wrong args", NAPI_AUTO_LENGTH, &result);
+        status = napi_create_string_utf8(env, "Error : wrong number of args", NAPI_AUTO_LENGTH, &result);
         return result;
     }
 
@@ -108,28 +108,46 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
 
     printf("NDI url_source Url : %s \n", url_source);
 
+
+    const char *dns_source = NULL;
+    size_t dns_sourcel;
+
+    status = napi_typeof(env, args[1], &type);
+    if (type != napi_string)
+    {
+        status = napi_create_string_utf8(env, "Error : Wrong type - NDI dns_source", NAPI_AUTO_LENGTH, &result);
+        return result;
+    }
+
+    status = napi_get_value_string_utf8(env, args[1], NULL, 0, &dns_sourcel);
+    dns_source = (char *)malloc(dns_sourcel + 1);
+    status = napi_get_value_string_utf8(env, args[1], (char *)dns_source, dns_sourcel + 1, &dns_sourcel);
+
+    printf("NDI dns_source Url : %s \n", dns_source);
+
+
     const char *target = NULL;
     size_t targetl;
 
-    status = napi_typeof(env, args[1], &type);
+    status = napi_typeof(env, args[2], &type);
     if (type != napi_string)
     {
         printf("Wrong type - NDI Target \n");
         return NULL;
     }
 
-    status = napi_get_value_string_utf8(env, args[1], NULL, 0, &targetl);
+    status = napi_get_value_string_utf8(env, args[2], NULL, 0, &targetl);
     target = (char *)malloc(targetl + 1);
-    status = napi_get_value_string_utf8(env, args[1], (char *)target, targetl + 1, &targetl);
+    status = napi_get_value_string_utf8(env, args[2], (char *)target, targetl + 1, &targetl);
 
     printf("NDI Target Name : %s \n", target);
 
     int target_index;
-    status = napi_get_value_int32(env, args[2], &target_index);
+    status = napi_get_value_int32(env, args[3], &target_index);
 
     // Populate carrier with new instance
     NDIlib_source_t *ndi_source = new NDIlib_source_t();
-    ndi_source->p_ndi_name = "";
+    ndi_source->p_ndi_name = dns_source;
     ndi_source->p_url_address = url_source;
 
 

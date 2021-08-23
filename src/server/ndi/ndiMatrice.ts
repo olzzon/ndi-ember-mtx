@@ -4,10 +4,11 @@ const ndi_mtx = require('bindings')('ndi_mtx')
 
 export const initializeNdiRouting = (
     url: string,
+    dnsSource: string,
     targetLabel: string,
     targetIndex: number
 ) => {
-    let status = ndi_mtx.initializeRouting(url, targetLabel, targetIndex)
+    let status = ndi_mtx.initializeRouting(url, dnsSource, targetLabel, targetIndex)
     if ('completed' !== status) {
         logger.error(`NDI Error : ${status}`)
     }
