@@ -31,7 +31,12 @@ http://localhost:3008
 
 Connect to Ember server on port: 9000
 
-Source and target list are located in the storage folder, and should be edited prior to running NDI MTX.
+## REST API
+You can change connections from REST API with:
+```
+POST http://localhost:3008/setmatrix?source=8&target=3
+```
 
-Inspiration for Node-API c bindings are taken from Streampunk Media
+
+Big thanks goes to Streampunk Media for Node-API c bindings inspiration
 
