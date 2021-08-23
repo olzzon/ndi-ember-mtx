@@ -47,6 +47,14 @@ export const webServer = (sources: ISource[], targets: ITarget[]) => {
         })
     }
 
+    const restSetMatrix = (req: any, res: any) => {
+        logger.info('Query : ', req.query)
+        const targetIndex = req.query.target - 1
+        const sourceIndex = req.query.source - 1
+            setMatrixConnection(sourceIndex, targetIndex)
+            res.end('Matrix changed')
+    }
+
     const emberServerConnetion = () => {
         emberServer
             .on('matrix-connect', (info) => {
@@ -69,6 +77,9 @@ export const webServer = (sources: ISource[], targets: ITarget[]) => {
         app.get('/', (req: any, res: any) => {
             res.sendFile(path.resolve('index.html'))
         })
+        .post('/setmatrix', (req: any, res: any) => {
+          restSetMatrix(req, res)
+      })
     })
 
     socketServerConnection()
