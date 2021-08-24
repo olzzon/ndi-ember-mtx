@@ -1,6 +1,9 @@
 # NDI-EMBER-MTX
 
 NDI Matrice with Ember control for NDI - VSM integration
+The NDI MTX creates virtual targets (defined in target.json file) that you can select from your NDI Decoder (E.g. vMix or a Birddog)
+
+It's build with static installations in mind, so it's not using discovering protocol for finding sources. But instead a static list in sources.json file.
 
 <img src="doc/mtx.png">
 
