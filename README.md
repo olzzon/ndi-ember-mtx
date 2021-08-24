@@ -39,7 +39,10 @@ You can change connections from REST API with:
 ```
 POST http://localhost:3008/setmatrix?source=8&target=3
 ```
-
+And /state returns JSON with current state:
+```
+http://localhost:3008/state
+```
 
 Big thanks goes to Streampunk Media for Node-API c bindings inspiration
 

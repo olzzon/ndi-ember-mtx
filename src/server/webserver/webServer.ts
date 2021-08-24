@@ -47,7 +47,7 @@ export const webServer = (sources: ISource[], targets: ITarget[]) => {
         })
     }
 
-    const restSetMatrix = (req: any, res: any) => {
+    const RESTsetMatrix = (req: any, res: any) => {
         logger.info('Query : ', req.query)
         const targetIndex = req.query.target - 1
         const sourceIndex = req.query.source - 1
@@ -77,8 +77,11 @@ export const webServer = (sources: ISource[], targets: ITarget[]) => {
         app.get('/', (req: any, res: any) => {
             res.sendFile(path.resolve('index.html'))
         })
+        app.get('/state', (req: any, res: any) => {
+            res.send({targets})
+        })
         .post('/setmatrix', (req: any, res: any) => {
-          restSetMatrix(req, res)
+          RESTsetMatrix(req, res)
       })
     })
 
