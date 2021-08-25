@@ -1,28 +1,28 @@
 [
     {
         "label": "vMix PGM",
-        "dnsSource": "TESTMACHINE (SOURCE1)",
+        "dnsSource": "OD-GRA-201104 (vMix - Output 1)",
         "url": "192.168.8.141:5961"
     },
     {
         "label": "vMix MV",
-        "dnsSource": "TESTMACHINE (SOURCE2)",
+        "dnsSource": "OD-GRA-201104 (vMix - Output 2)",
         "url": "192.168.8.141:5962"
     },
     {
         "label": "vMix Aux",
-        "dnsSource": "TESTMACHINE (SOURCE3)",
+        "dnsSource": "OD-GRA-201104 (vMix - Output 3)",
         "url": "192.168.8.141:5963"
     },
     {
-        "label": "vMix",
-        "dnsSource": "TESTMACHINE (SOURCE4)",
+        "label": "vMix KVM",
+        "dnsSource": "OD-GRA-201104 (NVIDIA Quadro RTX 4000 1)",
         "url": "192.168.8.141:5964"
     },
     {
-        "label": "AVID 104",
-        "dnsSource": "TESTMACHINE (SOURCE5)",
-        "url": "192.168.0.12:5962"
+        "label": "PTZ Cam",
+        "dnsSource": "KIT1-PTZ-KAM2 (NDI_Device-J0TRA0085)",
+        "url": "192.168.8.127:5961"
     },
     {
         "label": "AVID 105",
