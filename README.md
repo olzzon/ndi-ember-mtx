@@ -5,7 +5,11 @@ The NDI MTX creates virtual targets (defined in target.json file) that you can s
 
 It's build with static installations in mind, so it's not using discovering protocol for finding sources. But instead a static list in sources.json file.
 
+## Matrix view:
 <img src="doc/mtx.png">
+
+## Client Panel view:
+<img src="doc/clientpanel.png">
 
 ## Installation: 
 (ubuntu 20.04lts on Intel based machine)
@@ -27,9 +31,14 @@ yarn build-client
 yarn start
 ```
 
-Open GUI in chrome:
+Open MTX GUI in chrome:
 ```
 http://localhost:3008
+```
+
+Open CLIENT PANEL GUI in chrome:
+```
+http://localhost:3008/?target=2
 ```
 
 Connect to Ember server on port: 9000
