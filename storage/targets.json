@@ -1,1 +1,58 @@
-[{"selectedSource":1,"label":"Monitor1"},{"selectedSource":0,"label":"Monitor2"},{"selectedSource":1,"label":"Birddog"},{"selectedSource":0,"label":"vMixInp1"},{"selectedSource":0,"label":"RED211"},{"selectedSource":0,"label":"RED212"},{"selectedSource":0,"label":"RED213"},{"selectedSource":4,"label":"RED214"},{"selectedSource":5,"label":"RED215"},{"selectedSource":4,"label":"RED216"},{"selectedSource":6,"label":"RED217"},{"selectedSource":3,"label":"RED218"},{"selectedSource":7,"label":"RED219"},{"selectedSource":5,"label":"RED220"}]
+[
+    {
+        "selectedSource": 1,
+        "label": "Monitor1"
+    },
+    {
+        "selectedSource": 0,
+        "label": "Monitor2"
+    },
+    {
+        "selectedSource": 2,
+        "label": "Birddog1"
+    },
+    {
+        "selectedSource": 0,
+        "label": "vMixInp1"
+    },
+    {
+        "selectedSource": 0,
+        "label": "vMixInp2"
+    },
+    {
+        "selectedSource": 0,
+        "label": "Birddog2"
+    },
+    {
+        "selectedSource": 0,
+        "label": "RED213"
+    },
+    {
+        "selectedSource": 4,
+        "label": "RED214"
+    },
+    {
+        "selectedSource": 5,
+        "label": "RED215"
+    },
+    {
+        "selectedSource": 4,
+        "label": "RED216"
+    },
+    {
+        "selectedSource": 6,
+        "label": "RED217"
+    },
+    {
+        "selectedSource": 3,
+        "label": "RED218"
+    },
+    {
+        "selectedSource": 7,
+        "label": "RED219"
+    },
+    {
+        "selectedSource": 5,
+        "label": "RED220"
+    }
+]
