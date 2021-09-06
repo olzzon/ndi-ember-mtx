@@ -1,6 +1,6 @@
 {
     "name": "ndi-ember-mtx",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "NDI Matrice controlled with Ember for VSM integration",
     "main": "dist/server/index.js",
     "contributors": [
