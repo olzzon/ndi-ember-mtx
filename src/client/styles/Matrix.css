@@ -4,7 +4,7 @@
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    width: 10vw;
+    width: 60px;
     color: aqua;
 }
 
@@ -12,27 +12,24 @@
 .matrixsources {
     justify-content: left;
     align-items: left;
-    margin-top: 3vh;
-    margin-left: 30vw;
+    margin-top: 3px;
+    margin-left: 60px;
     flex-direction: row;
 }
 
 .matrix_source_target_label  {
-    margin-bottom: 2vh;
-    height: 3vh;
-    font-size: 120%;
+    margin-bottom: 2px;
+    height: 35px;
+    font-size: 35px;
 }
 
 .matrixsource {
-    margin-top: 0.8vh;
-    height: 3.3vh;
-    font-size: 120%;
+    margin-top: 2px;
+    height: 35px;
+    font-size: 35px;
 }
 
 .matrixtargets {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
     justify-content: left;
     align-items: left;
     width: 10vw;
@@ -40,25 +37,25 @@
 }
 
 .matrixtarget {
-    justify-content: left;
-    align-items: left;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .matrix_target_label {
     direction: rtl;
     transform: rotate(90deg);
     font-size: 100%;
-    height: 2vw;
-    margin-bottom: 3vh;
+    height: 2px;
+    margin-bottom: 60px;
 }
 
 .matrix_connection_botton {
     color: white;
     background-color: rgb(73, 73, 73);
-    margin-top: 1vh;
-    margin-left: 1vw;
-    height: 3vh;
-    width: 3vh;
-    font-size: 1.4rem;
+    margin-top: 3px;
+    margin-left: 2px;
+    height: 35px;
+    width: 35px;
+    font-size: 20px;
 }
