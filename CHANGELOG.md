@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/olzzon/ndi-ember-mtx/compare/v0.0.2...v0.0.3) (2021-09-08)
+
+
+### Features
+
+* add NDI trademark info ([0efe888](https://github.com/olzzon/ndi-ember-mtx/commit/0efe8888196b2bcf240cf992b5633f04ac2b037e))
+
 ### 0.0.2 (2021-09-06)
 
 
