@@ -26,7 +26,7 @@ export const setMatrixConnection = (
     emberClient
         .getElementByPath('0.1.0')
         .then((matrix: any) => {
-            emberClient.matrixConnect(matrix, targetIndex + 1, [sourceIndex])
+            emberClient.matrixConnect(matrix, targetIndex, [sourceIndex])
         })
         .catch((error: any) => {
             logger.error('Error connection Ember crosspoint')
