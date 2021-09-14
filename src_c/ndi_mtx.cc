@@ -52,10 +52,6 @@ napi_value changeRoutingSource(napi_env env, napi_callback_info info)
     dns_source = (char *)malloc(dns_sourcel + 1);
     status = napi_get_value_string_utf8(env, args[1], (char *)dns_source, dns_sourcel + 1, &dns_sourcel);
 
-    printf("NDI dns_source Url : %s \n", dns_source);
-
-
-
     // Populate carrier with new instance
     NDIlib_source_t *ndi_source = new NDIlib_source_t();
     ndi_source->p_ndi_name = dns_source;
@@ -68,7 +64,7 @@ napi_value changeRoutingSource(napi_env env, napi_callback_info info)
 
     NDIlib_routing_change(pNDI_routing[target_index], ndi_source);
 
-    printf("NDI Changing Target Index %i to url_source %s \n", target_index, url_source);
+    printf("ndi_mtx.cc - NDI Changing Target Index %i to url_source %s \n", target_index, url_source);
     status = napi_create_string_utf8(env, "completed", NAPI_AUTO_LENGTH, &result);
 
     assert(status == napi_ok);
@@ -106,9 +102,6 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
     url_source = (char *)malloc(url_sourcel + 1);
     status = napi_get_value_string_utf8(env, args[0], (char *)url_source, url_sourcel + 1, &url_sourcel);
 
-    printf("NDI url_source Url : %s \n", url_source);
-
-
     const char *dns_source = NULL;
     size_t dns_sourcel;
 
@@ -123,24 +116,19 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
     dns_source = (char *)malloc(dns_sourcel + 1);
     status = napi_get_value_string_utf8(env, args[1], (char *)dns_source, dns_sourcel + 1, &dns_sourcel);
 
-    printf("NDI dns_source Url : %s \n", dns_source);
-
-
     const char *target = NULL;
     size_t targetl;
 
     status = napi_typeof(env, args[2], &type);
     if (type != napi_string)
     {
-        printf("Wrong type - NDI Target \n");
+        printf("ndi_mtx.cc - Wrong type - NDI Target \n");
         return NULL;
     }
 
     status = napi_get_value_string_utf8(env, args[2], NULL, 0, &targetl);
     target = (char *)malloc(targetl + 1);
     status = napi_get_value_string_utf8(env, args[2], (char *)target, targetl + 1, &targetl);
-
-    printf("NDI Target Name : %s \n", target);
 
     int target_index;
     status = napi_get_value_int32(env, args[3], &target_index);
@@ -163,7 +151,7 @@ napi_value initializeRouting(napi_env env, napi_callback_info info)
 
     NDIlib_routing_change(pNDI_routing[target_index], ndi_source);
 
-    printf("NDI Routing initialized!!!! \n");
+    printf("ndi_mtx.cc -  Initialized NDI target: %i \n", target_index);
     status = napi_create_string_utf8(env, "completed", NAPI_AUTO_LENGTH, &result);
 
     assert(status == napi_ok);

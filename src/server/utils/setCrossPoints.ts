@@ -9,8 +9,8 @@ export const setAllCrossPoints = (sources: ISource[], targets: ITarget[]) => {
             logger.info(
                 `Initializing Crosspoint Source : ${
                     target.selectedSource
-                } Name : ${sources[target.selectedSource].dnsSource} to ${
-                    target.label
+                }  to ${
+                    targetIndex
                 }`
             )
             setMatrixConnection(target.selectedSource, targetIndex)
