@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/olzzon/ndi-ember-mtx/compare/v0.0.3...v0.0.4) (2021-09-14)
+
+
+### Features
+
+* update Ember MTX naming ([b8ce370](https://github.com/olzzon/ndi-ember-mtx/commit/b8ce3701b56ea1bef10f85d131edd1e05342776b))
+
+
+### Bug Fixes
+
+* Client MTX did an +1 offset in the Ember MTX ([95f0623](https://github.com/olzzon/ndi-ember-mtx/commit/95f06234d5c864a3126ce68f0f5cd4975eee7170))
+* Offset in Ember MTX between localClient and VSM ([5c2c543](https://github.com/olzzon/ndi-ember-mtx/commit/5c2c543c5b24e08dc5faa21e3c992f71968dd9a6))
+
 ### [0.0.3](https://github.com/olzzon/ndi-ember-mtx/compare/v0.0.2...v0.0.3) (2021-09-08)
 
 
