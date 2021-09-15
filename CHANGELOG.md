@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/olzzon/ndi-ember-mtx/compare/v0.0.4...v0.0.5) (2021-09-15)
+
+
+### Bug Fixes
+
+* css issue because of double .matrixsource class in 2 different css files ([b4f6595](https://github.com/olzzon/ndi-ember-mtx/commit/b4f6595f1e8a77d6a50d4f359e4813ffb7400b1f))
+
 ### [0.0.4](https://github.com/olzzon/ndi-ember-mtx/compare/v0.0.3...v0.0.4) (2021-09-14)
 
 
