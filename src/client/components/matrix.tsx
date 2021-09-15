@@ -31,14 +31,10 @@ const Matrix = () => {
         socketClient.emit(IO.CHANGE_SOURCE, sourceIndex, targetIndex)
     }
 
-    const handleRestartServer = () => {
-        console.log('RESTARTING SERVER')
-    }
-
     const renderSources = () => {
         return (
             <div className="matrixsources">
-                <div className="matrix_source_target_label">Source\Target</div>
+                <div className="matrixsourcetarget">Source\Target</div>
                 {sources.map((source, sourceIndex) => {
                     return (
                         <form key={sourceIndex} className="matrixsource">
@@ -55,7 +51,7 @@ const Matrix = () => {
             <div className="matrixtargets">
                 {targets.map((target, targetIndex) => {
                     return (
-                        <div key={targetIndex}>
+                        <div key={targetIndex} className="matrixtarget">
                             <div
                                 className={'matrix_target_label'}
                             >
