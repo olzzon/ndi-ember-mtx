@@ -69,7 +69,7 @@ export const webServer = (sources: ISource[], targets: ITarget[]) => {
             socketServer.emit(IO.UPDATE_CLIENT, sources, targets)
             updateTargetList(targets)
         })
-        server.on('matrix-change', (info) => {
+        emberServer.on('matrix-change', (info) => {
             logger.info(
                 `Ember Client ${info.client} changed target : ${info.target} using source : ${info.sources}`
             )
