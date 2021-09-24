@@ -51,21 +51,37 @@ export const webServer = (sources: ISource[], targets: ITarget[]) => {
         logger.info('Query : ', req.query)
         const targetIndex = req.query.target - 1
         const sourceIndex = req.query.source - 1
-            setMatrixConnection(sourceIndex, targetIndex)
-            res.end('Matrix changed')
+        setMatrixConnection(sourceIndex, targetIndex)
+        res.end('Matrix changed')
     }
 
     const emberServerConnetion = () => {
-        emberServer
-            .on('matrix-connect', (info) => {
-                logger.info(
-                    `Ember Client ${info.client} changed target : ${info.target} using source : ${info.sources}`
-                )
-                targets[info.target].selectedSource = parseInt(info.sources)
-                changeNdiRoutingSource(sources[info.sources].url, sources[info.sources].dnsSource, info.target)
-                socketServer.emit(IO.UPDATE_CLIENT, sources, targets)
-                updateTargetList(targets)
-            })
+        emberServer.on('matrix-connect', (info) => {
+            logger.info(
+                `Ember Client ${info.client} connected target : ${info.target} using source : ${info.sources}`
+            )
+            targets[info.target].selectedSource = parseInt(info.sources)
+            changeNdiRoutingSource(
+                sources[info.sources].url,
+                sources[info.sources].dnsSource,
+                info.target
+            )
+            socketServer.emit(IO.UPDATE_CLIENT, sources, targets)
+            updateTargetList(targets)
+        })
+        server.on('matrix-change', (info) => {
+            logger.info(
+                `Ember Client ${info.client} changed target : ${info.target} using source : ${info.sources}`
+            )
+            targets[info.target].selectedSource = parseInt(info.sources)
+            changeNdiRoutingSource(
+                sources[info.sources].url,
+                sources[info.sources].dnsSource,
+                info.target
+            )
+            socketServer.emit(IO.UPDATE_CLIENT, sources, targets)
+            updateTargetList(targets)
+        })
     }
 
     const port: number = parseInt(process.env.PORT || '3008') || 3008
@@ -78,11 +94,10 @@ export const webServer = (sources: ISource[], targets: ITarget[]) => {
             res.sendFile(path.resolve('index.html'))
         })
         app.get('/state', (req: any, res: any) => {
-            res.send({targets})
+            res.send({ targets })
+        }).post('/setmatrix', (req: any, res: any) => {
+            RESTsetMatrix(req, res)
         })
-        .post('/setmatrix', (req: any, res: any) => {
-          RESTsetMatrix(req, res)
-      })
     })
 
     socketServerConnection()
