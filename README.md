@@ -24,6 +24,7 @@ ndi_mtx.cc will build when yarn is called.
 ```
 apt-get update && apt-get install -y libavahi-common-dev libavahi-client-dev build-essential
 clone and cd to ndi-ember-mtx folder
+install nodejs and yarn
 cp ./lib/x86_64-linux-gnu/* /usr/lib/
 yarn
 yarn build-server
@@ -52,6 +53,42 @@ And /state returns JSON with current state:
 ```
 http://localhost:3008/state
 ```
+
+## Example of autostart using systemd:
+(based on standard install of nodejs and user named ndi)
+
+create start.sh file in ndi-ember-mtx folder:
+```
+#!/bin/bash
+while true; do
+    echo "Starting NDI MTX"
+    cd /home/ndi/ndi-ember-mtx
+    /etc/bin/node build/server/index.js
+    sleep 2
+done
+```
+
+create systemd service file /etc/systemd/system/ndimtx.service
+```
+[Unit]
+After=network.service
+
+[Service]
+Type=simple
+ExecStart=/home/ndi/ndi-ember-mtx/start.sh
+WorkingDirectory=/home/ndi/ndi-ember-mtx
+StandardOutput=syslog
+StandardError=syslog
+User=ndi
+
+[Install]
+WantedBy=multi-user.target
+```
+start service with:
+```
+systemctl start ndimtx.service
+```
+
 
 Big thanks goes to Streampunk Media for Node-API c bindings inspiration
 
