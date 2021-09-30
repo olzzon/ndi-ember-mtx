@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/olzzon/ndi-ember-mtx/compare/v0.0.5...v0.0.6) (2021-09-30)
+
+
+### Bug Fixes
+
+* type watched server instead of emberServer ([a3d2d2a](https://github.com/olzzon/ndi-ember-mtx/commit/a3d2d2a30a25e4b5ec878332a6105efd85dcfaa5))
+* Web client is using matrix-change but VSM uses the Ember matrix-connect both are now supported ([14a3a78](https://github.com/olzzon/ndi-ember-mtx/commit/14a3a7876b31641f298fbd7860e33afa2f82cd74))
+
 ### [0.0.5](https://github.com/olzzon/ndi-ember-mtx/compare/v0.0.4...v0.0.5) (2021-09-15)
 
 
