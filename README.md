@@ -1,4 +1,7 @@
+# # This repo is deprecated use https://github.com/olzzon/ndi-controller instead.
+
 # NDI-EMBER-MTX
+
 
 NDI Matrice with Ember control for NDI - VSM integration
 The NDI MTX creates virtual targets (defined in target.json file) that you can select from your NDI Decoder (E.g. vMix or a Birddog)
